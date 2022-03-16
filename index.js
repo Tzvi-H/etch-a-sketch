@@ -18,20 +18,23 @@ function createGridRow(columns) {
   return row;
 }
 
-function addEventListenersToGrid() {
-  const gridContainer = document.querySelector('.grid-container');
-  gridContainer.addEventListener('mouseover', colorSquare);
-}
-
 function colorSquare(e) {
   if (!e.target.classList.contains('grid-square')) return;
 
   e.target.classList.add('active');
 }
 
-createGrid(16, 16);
-addEventListenersToGrid()
+function resetGrid(e) {
+  const gridContainer = document.querySelector('.grid-container');
+  while (gridContainer.firstChild) {
+    gridContainer.removeChild(gridContainer.firstChild);
+  }
+}
 
-// add reset button
-// add prompt for grid size
+createGrid(16, 16);
+document.querySelector('.grid-container').addEventListener('mouseover', colorSquare);
+document.querySelector('#reset-grid').addEventListener('click', resetGrid)
+
+// add reset button that resets the colors
+// clicking on reset should prompt for grid size
 // redraw grid always using the same overall space (pixels)
