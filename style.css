@@ -12,3 +12,7 @@
   height: 20px;
   border: 1px solid black;
 }
+
+.grid-square.active {
+  background-color: blue;
+}

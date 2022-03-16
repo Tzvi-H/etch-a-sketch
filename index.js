@@ -21,4 +21,20 @@ function createGridRow() {
   return row;
 }
 
+function addEventListenersToGrid() {
+  const gridContainer = document.querySelector('.grid-container');
+  gridContainer.addEventListener('mouseover', colorSquare);
+}
+
+function colorSquare(e) {
+  if (!e.target.classList.contains('grid-square')) return;
+
+  e.target.classList.add('active');
+}
+
 createGrid();
+addEventListenersToGrid()
+
+// add event listener for mouseenter to grid container
+// if target is not a square, then return
+// add color to the target
