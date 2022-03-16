@@ -1,0 +1,9 @@
+.grid-row {
+  display: flex;
+}
+
+.grid-square {
+  width: 25px;
+  height: 25px;
+  border: 1px solid black;
+}
