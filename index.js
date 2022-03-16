@@ -1,18 +1,15 @@
-const ROWS = 16;
-const COLUMNS = 16;
-
-function createGrid() {
+function createGrid(rows, columns) {
   const gridContainer = document.querySelector('.grid-container');
-  for (let i = 0; i < ROWS; i++) {
-    gridContainer.appendChild(createGridRow());
+  for (let i = 0; i < rows; i++) {
+    gridContainer.appendChild(createGridRow(columns));
   }
 }
 
-function createGridRow() {
+function createGridRow(columns) {
   const row = document.createElement('div');
   row.classList.add('grid-row');
 
-  for (let i = 0; i < COLUMNS; i++) {
+  for (let i = 0; i < columns; i++) {
     const square = document.createElement('div');
     square.classList.add('grid-square');
     row.appendChild(square);
@@ -32,9 +29,9 @@ function colorSquare(e) {
   e.target.classList.add('active');
 }
 
-createGrid();
+createGrid(16, 16);
 addEventListenersToGrid()
 
-// add event listener for mouseenter to grid container
-// if target is not a square, then return
-// add color to the target
+// add reset button
+// add prompt for grid size
+// redraw grid always using the same overall space (pixels)
