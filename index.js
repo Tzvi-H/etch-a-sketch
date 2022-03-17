@@ -28,14 +28,14 @@ function createGridRow(size) {
 function colorSquare(e) {
   if (!e.target.classList.contains('grid-square')) return;
   
-  // OPTION 1
+  // OPTION 1 (increase alpha)
   // if (alpha < 1) alpha += .1;
   // e.target.style.backgroundColor = `rgba(0, 0, 0, ${alpha})`;
 
-  // OPTION 2
+  // OPTION 2 (random colors)
   e.target.style.backgroundColor = getRandomColor();
 
-  // OPTION 3
+  // OPTION 3 (static css color from css class)
   // e.target.classList.add('active');
 }
 
