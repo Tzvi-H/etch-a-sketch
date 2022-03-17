@@ -1,10 +1,15 @@
-let alpha = 0
+let alpha;
 
 function createGrid(size) {
   const gridContainer = document.querySelector('.grid-container');
+  while (gridContainer.firstChild) {
+    gridContainer.removeChild(gridContainer.firstChild);
+  }
+
   for (let i = 0; i < size; i++) {
     gridContainer.appendChild(createGridRow(size));
   }
+  alpha = 0;
 }
 
 function createGridRow(size) {
@@ -23,20 +28,24 @@ function createGridRow(size) {
 function colorSquare(e) {
   if (!e.target.classList.contains('grid-square')) return;
   
-  if (alpha < 1) alpha += .1;
-  e.target.style.backgroundColor = `rgba(0, 0, 0, ${alpha})`;
-  // e.target.style.backgroundColor = getRandomColor();
+  // OPTION 1
+  // if (alpha < 1) alpha += .1;
+  // e.target.style.backgroundColor = `rgba(0, 0, 0, ${alpha})`;
+
+  // OPTION 2
+  e.target.style.backgroundColor = getRandomColor();
+
+  // OPTION 3
   // e.target.classList.add('active');
 }
 
 function resetGrid(e) {
-  const gridContainer = document.querySelector('.grid-container');
-  while (gridContainer.firstChild) {
-    gridContainer.removeChild(gridContainer.firstChild);
-  }
-
-  const newSize = Number(prompt('What size should the grid be? (Enter the nubmer of squares per side)'));
-  if (newSize > 0) {
+  const newSize = Number(prompt('What size should the grid be? (Enter number of squares per side. Max 100)'));
+  if (newSize >= 1 && newSize <= 100) {
+    const gridContainer = document.querySelector('.grid-container');
+    while (gridContainer.firstChild) {
+      gridContainer.removeChild(gridContainer.firstChild);
+    }
     createGrid(newSize);
   } else {
     alert('Not a valid size');
