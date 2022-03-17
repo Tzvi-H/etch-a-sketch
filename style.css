@@ -1,8 +1,12 @@
 .grid-section {
   display: flex;
-  /* justify-content: center; */
   flex-direction: column;
   align-items: center;
+}
+
+.grid-container {
+  width: 400px;
+  height: 400px;
 }
 
 .grid-row {
@@ -10,8 +14,6 @@
 }
 
 .grid-square {
-  width: 20px;
-  height: 20px;
   border: 1px solid black;
 }
 
@@ -26,3 +28,4 @@ button#reset-grid {
   cursor: pointer;
   margin: 8px 0;
 }
+

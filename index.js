@@ -13,11 +13,14 @@ function createGrid(size) {
 }
 
 function createGridRow(size) {
+  const gridContainer = document.querySelector('.grid-container');
   const row = document.createElement('div');
   row.classList.add('grid-row');
 
   for (let i = 0; i < size; i++) {
     const square = document.createElement('div');
+    square.style.width = `${gridContainer.offsetWidth / size}px`;
+    square.style.height = `${gridContainer.offsetHeight / size}px`;
     square.classList.add('grid-square');
     row.appendChild(square);
   }
