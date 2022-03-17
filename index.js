@@ -1,3 +1,5 @@
+let alpha = 0
+
 function createGrid(size) {
   const gridContainer = document.querySelector('.grid-container');
   for (let i = 0; i < size; i++) {
@@ -20,8 +22,11 @@ function createGridRow(size) {
 
 function colorSquare(e) {
   if (!e.target.classList.contains('grid-square')) return;
-
-  e.target.classList.add('active');
+  
+  if (alpha < 1) alpha += .1;
+  e.target.style.backgroundColor = `rgba(0, 0, 0, ${alpha})`;
+  // e.target.style.backgroundColor = getRandomColor();
+  // e.target.classList.add('active');
 }
 
 function resetGrid(e) {
@@ -29,7 +34,7 @@ function resetGrid(e) {
   while (gridContainer.firstChild) {
     gridContainer.removeChild(gridContainer.firstChild);
   }
-  
+
   const newSize = Number(prompt('What size should the grid be? (Enter the nubmer of squares per side)'));
   if (newSize > 0) {
     createGrid(newSize);
@@ -38,6 +43,16 @@ function resetGrid(e) {
   }
 }
 
+function getRandomColor() {
+  var letters = '0123456789ABCDEF';
+  var color = '#';
+  for (var i = 0; i < 6; i++) {
+    color += letters[Math.floor(Math.random() * 16)];
+  }
+  return color;
+}
+
+
 function init() {
   createGrid(16);
   document.querySelector('.grid-container').addEventListener('mouseover', colorSquare);
@@ -45,6 +60,4 @@ function init() {
 }
 
 init();
-// add reset button that resets the colors
-// clicking on reset should prompt for grid size
 // redraw grid always using the same overall space (pixels)
